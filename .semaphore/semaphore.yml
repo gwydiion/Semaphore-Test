@@ -11,3 +11,20 @@ blocks:
         - name: 'Job #1'
           commands:
             - checkout
+  - name: Tests
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: Unit Tests
+          commands:
+            - echo 'running unit tests'
+        - name: Integration Tests
+          commands:
+            - echo 'running integration tests'
+after_pipeline:
+  task:
+    jobs:
+      - name: 'Job #1'
+        commands: []
